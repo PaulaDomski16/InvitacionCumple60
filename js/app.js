@@ -6,11 +6,156 @@ document.addEventListener('DOMContentLoaded', () => {
     initCountdown();
     initAudioPlayer();
     initRSVPForm();
-    loadSavedWebhookUrl();
+    // loadSavedWebhookUrl(); // Comentado: Confirmación exclusiva por WhatsApp
     initCutoutLettersAnimation();
+    initHeroVideo();
+    initConfettiRain();
 });
 
-// ================= 0. ANIMACIÓN DE LETRAS TROQUELADAS =================
+// ================= 0.0 LLUVIA DE CONFETI / PARTÍCULAS =================
+function initConfettiRain() {
+    const canvas = document.getElementById('confettiCanvas');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    });
+
+    // Colores temática White Party (Blanco, Plata, Dorado, Champaña)
+    const colors = [
+        '#ffffff',
+        '#f8fafc',
+        '#ffd700',
+        '#eab308',
+        '#e4e4e7',
+        '#cbd5e1',
+        '#fde68a'
+    ];
+
+    const particleCount = window.innerWidth < 600 ? 55 : 95;
+    const particles = [];
+
+    function createParticle() {
+        return {
+            x: Math.random() * width,
+            y: Math.random() * height - height,
+            size: Math.random() * 8 + 4,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            shape: Math.random() > 0.4 ? 'rect' : (Math.random() > 0.5 ? 'circle' : 'star'),
+            speedY: Math.random() * 1.8 + 0.7,
+            speedX: Math.random() * 0.8 - 0.4,
+            oscillation: Math.random() * 0.03,
+            step: Math.random() * 100,
+            rotation: Math.random() * 360,
+            rotationSpeed: Math.random() * 3 - 1.5,
+            opacity: Math.random() * 0.6 + 0.4
+        };
+    }
+
+    for (let i = 0; i < particleCount; i++) {
+        const p = createParticle();
+        p.y = Math.random() * height; // Distribución inicial uniforme
+        particles.push(p);
+    }
+
+    function drawStar(ctx, cx, cy, spikes, outerRadius, innerRadius) {
+        let rot = (Math.PI / 2) * 3;
+        let x = cx;
+        let y = cy;
+        const step = Math.PI / spikes;
+
+        ctx.beginPath();
+        ctx.moveTo(cx, cy - outerRadius);
+        for (let i = 0; i < spikes; i++) {
+            x = cx + Math.cos(rot) * outerRadius;
+            y = cy + Math.sin(rot) * outerRadius;
+            ctx.lineTo(x, y);
+            rot += step;
+
+            x = cx + Math.cos(rot) * innerRadius;
+            y = cy + Math.sin(rot) * innerRadius;
+            ctx.lineTo(x, y);
+            rot += step;
+        }
+        ctx.lineTo(cx, cy - outerRadius);
+        ctx.closePath();
+        ctx.fill();
+    }
+
+    function render() {
+        ctx.clearRect(0, 0, width, height);
+
+        particles.forEach(p => {
+            p.step += p.oscillation;
+            p.y += p.speedY;
+            p.x += p.speedX + Math.sin(p.step) * 0.6;
+            p.rotation += p.rotationSpeed;
+
+            // Reciclar suavemente al salir por abajo
+            if (p.y > height + 20) {
+                p.y = -20;
+                p.x = Math.random() * width;
+            }
+            if (p.x > width + 20) p.x = -20;
+            if (p.x < -20) p.x = width + 20;
+
+            ctx.save();
+            ctx.globalAlpha = p.opacity;
+            ctx.fillStyle = p.color;
+            ctx.translate(p.x, p.y);
+            ctx.rotate((p.rotation * Math.PI) / 180);
+
+            if (p.shape === 'rect') {
+                ctx.fillRect(-p.size / 2, -p.size / 4, p.size, p.size / 2);
+            } else if (p.shape === 'circle') {
+                ctx.beginPath();
+                ctx.arc(0, 0, p.size / 2.5, 0, Math.PI * 2);
+                ctx.fill();
+            } else if (p.shape === 'star') {
+                drawStar(ctx, 0, 0, 4, p.size / 1.8, p.size / 4);
+            }
+
+            ctx.restore();
+        });
+
+        requestAnimationFrame(render);
+    }
+
+    render();
+}
+
+// ================= 0. VIDEO HERO =================
+function initHeroVideo() {
+    const videoContainer = document.getElementById('heroVideoContainer');
+    const video = document.getElementById('heroVideo');
+    const badge = document.getElementById('videoBadge');
+
+    if (!videoContainer || !video) return;
+
+    // Asegurar reproducción automática silenciada
+    video.muted = true;
+    video.play().catch(err => {
+        console.warn('Autoplay del video hero prevenido por el navegador:', err);
+    });
+
+    // Permitir alternar pausar / reproducir al hacer clic en el contenedor del video
+    videoContainer.addEventListener('click', () => {
+        if (video.paused) {
+            video.play();
+            if (badge) badge.innerHTML = '<i class="fa-solid fa-film"></i>';
+        } else {
+            video.pause();
+            if (badge) badge.innerHTML = '<i class="fa-solid fa-play"></i>';
+        }
+    });
+}
+
+// ================= 0.1 ANIMACIÓN DE LETRAS TROQUELADAS =================
 function initCutoutLettersAnimation() {
     const lettersContainer = document.querySelector('.cutout-letters-container');
     if (!lettersContainer) return;
@@ -104,12 +249,6 @@ function closeModal(modalId) {
     }
 }
 
-function openLightbox(imgSrc, title, desc) {
-    document.getElementById('lightboxImg').src = imgSrc;
-    document.getElementById('lightboxTitle').textContent = title;
-    document.getElementById('lightboxDesc').textContent = desc;
-    openModal('lightboxModal');
-}
 
 
 // ================= 4. COPIAR CBU / ALIAS =================
@@ -154,13 +293,30 @@ function downloadICS() {
 }
 
 
-// ================= 6. FORMULARIO RSVP & GOOGLE SHEETS =================
+// ================= 6. FORMULARIO RSVP & WHATSAPP =================
+// Número para pruebas (se cambiará luego por el definitivo): +543814562683
+const WHATSAPP_NUMBER = "543814562683";
+
+function buildWhatsAppUrl(data) {
+    let text = `¡Hola! Confirmo mi respuesta para la Fiesta de 60 Años (White Party) 🥂✨\n\n`;
+    text += `👤 *Nombre:* ${data.nombre}\n`;
+    text += `🎉 *Respuesta:* ${data.asistencia}\n`;
+
+    if (data.asistencia.includes('Sí') || data.asistencia.toLowerCase().includes('allí')) {
+        if (data.acompanantes) text += `👥 *Acompañantes:* ${data.acompanantes}\n`;
+        if (data.dieta) text += `🍽️ *Menú Preferido:* ${data.dieta}\n`;
+        if (data.cancion) text += `🎵 *Canción Pedida:* ${data.cancion}\n`;
+    }
+
+    if (data.mensaje) {
+        text += `💬 *Mensaje:* "${data.mensaje}"\n`;
+    }
+
+    return `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(text)}`;
+}
+
 function initRSVPForm() {
     const form = document.getElementById('rsvpForm');
-    const successCard = document.getElementById('rsvpSuccessCard');
-    const summaryBox = document.getElementById('rsvpSummaryBox');
-    const submitBtn = document.getElementById('submitBtn');
-
     if (!form) return;
 
     // Verificar si ya envió previamente
@@ -186,31 +342,35 @@ function initRSVPForm() {
         // UI Loading
         setBtnLoading(true);
 
-        // Obtener URL de Webhook configurada
+        /* ==========================================================================
+           REGISTRO GOOGLE SHEETS (Deshabilitado / Comentado para esta ocasión)
+           ==========================================================================
         const webhookUrl = getWebhookUrl();
+        if (webhookUrl) {
+            fetch(webhookUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            }).catch(err => console.warn('Error enviando a Webhook:', err));
+        }
+        ========================================================================== */
 
         try {
-            if (webhookUrl) {
-                // Intentar enviar a Google Sheets vía Apps Script
-                await fetch(webhookUrl, {
-                    method: 'POST',
-                    mode: 'no-cors', // Evita bloqueo CORS en Google Apps Script
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-            }
-
-            // Guardar localmente
+            // Guardar en almacenamiento local
             localStorage.setItem('cumple60_rsvp_data', JSON.stringify(data));
+
+            // Abrir WhatsApp con el mensaje pre-cargado
+            const waUrl = buildWhatsAppUrl(data);
+            window.open(waUrl, '_blank');
 
             setTimeout(() => {
                 setBtnLoading(false);
                 showSuccessState(data);
-            }, 1000);
+            }, 600);
 
         } catch (error) {
-            console.error('Error al enviar RSVP:', error);
-            // Guardar localmente de todos modos
+            console.error('Error procesando RSVP:', error);
             localStorage.setItem('cumple60_rsvp_data', JSON.stringify(data));
             setBtnLoading(false);
             showSuccessState(data);
@@ -242,15 +402,23 @@ function showSuccessState(data) {
     form.classList.add('hidden');
     successCard.classList.remove('hidden');
 
+    const waUrl = buildWhatsAppUrl(data);
+
     summaryBox.innerHTML = `
         <p><strong>Invitado/a:</strong> ${escapeHtml(data.nombre)}</p>
         <p><strong>Asistencia:</strong> ${escapeHtml(data.asistencia)}</p>
-        ${data.asistencia.includes('Sí') ? `
+        ${(data.asistencia.includes('Sí') || data.asistencia.toLowerCase().includes('allí')) ? `
             <p><strong>Acompañantes:</strong> ${escapeHtml(data.acompanantes)}</p>
             <p><strong>Menú Preferido:</strong> ${escapeHtml(data.dieta)}</p>
             ${data.cancion ? `<p><strong>Canción Pedida:</strong> 🎵 ${escapeHtml(data.cancion)}</p>` : ''}
         ` : ''}
         ${data.mensaje ? `<p><strong>Mensaje:</strong> "${escapeHtml(data.mensaje)}"</p>` : ''}
+        
+        <div style="margin-top: 15px; text-align: center;">
+            <a href="${waUrl}" target="_blank" class="scrapbook-btn" style="background-color: #25d366; color: #ffffff; text-decoration: none;">
+                <i class="fa-brands fa-whatsapp"></i> Abrir WhatsApp nuevamente
+            </a>
+        </div>
     `;
 }
 

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Celebremos mis 60 Años | White Party</title>
-    <meta name="description" content="Invitación digital interactiva para mi Fiesta de 60 Años. ¡Te espero para celebrar juntos en la White Party!">
-    
+    <meta name="description"
+        content="Invitación digital interactiva para mi Fiesta de 60 Años. ¡Te espero para celebrar juntos en la White Party!">
+
     <!-- Open Graph / Meta Compartir -->
     <meta property="og:title" content="¡Celebremos juntos mi Cumple de 60! 🥂">
     <meta property="og:description" content="31 de Octubre, 22hs - Caja Complementaria UNSE. Dress code: TOTAL WHITE">
@@ -14,15 +16,21 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@400;600;800;900&family=Permanent+Marker&family=Special+Elite&family=Outfit:wght@300;500;700;900&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@400;600;800;900&family=Permanent+Marker&family=Special+Elite&family=Outfit:wght@300;500;700;900&display=swap"
+        rel="stylesheet">
+
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+
+    <!-- Confetti & Particles Canvas -->
+    <canvas id="confettiCanvas"></canvas>
 
     <!-- Audio Player Controller -->
     <div class="audio-floating-btn" id="audioBtn" title="Reproducir / Pausar Música">
@@ -31,113 +39,22 @@
             <span></span><span></span><span></span>
         </span>
     </div>
-    <audio id="bgMusic" loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=upbeat-pop-celebration-114402.mp3"></audio>
+    <audio id="bgMusic" loop src="assets/audio/WhatsApp%20Audio%202026-08-20%20at%2020.58.04.mpeg"></audio>
 
     <!-- Main Container Scrapbook Background -->
     <main class="scrapbook-wrapper">
 
         <!-- ================= HERO SECTION ================= -->
-        <section class="hero-section">
-            
-            <!-- Decorative Stickers & Doodles -->
-            <div class="sticker star-glitter star-1">★</div>
-            <div class="sticker star-glitter star-2">✦</div>
-            <div class="sticker star-glitter star-3">★</div>
-            <div class="sticker pearl pearl-1"></div>
-            <div class="sticker pearl pearl-2"></div>
-            <div class="sticker pearl pearl-3"></div>
-            <div class="doodle doodle-heart-1">♡</div>
-            <div class="doodle doodle-heart-2">♥</div>
-            
-            <div class="doodle doodle-champagne">
-                <svg viewBox="0 0 100 120" width="70" height="84">
-                    <path d="M35 10 L65 10 L60 55 C60 70 40 70 40 55 Z M50 67 L50 105 M35 105 L65 105" stroke="#111" stroke-width="3" fill="none" stroke-linecap="round"/>
-                    <path d="M42 45 L58 45" stroke="#111" stroke-width="2" stroke-dasharray="3 3"/>
-                    <circle cx="50" cy="30" r="2" fill="#111"/>
-                    <circle cx="45" cy="22" r="1.5" fill="#111"/>
-                    <circle cx="54" cy="20" r="2" fill="#111"/>
-                </svg>
-            </div>
-
-            <div class="doodle doodle-discoball">
-                <svg viewBox="0 0 100 100" width="70" height="70">
-                    <circle cx="50" cy="50" r="40" stroke="#111" stroke-width="3" fill="none"/>
-                    <line x1="50" y1="0" x2="50" y2="10" stroke="#111" stroke-width="3"/>
-                    <path d="M10 50 Q50 20 90 50 Q50 80 10 50 Z" stroke="#111" stroke-width="1.5" fill="none"/>
-                    <path d="M10 50 Q50 35 90 50 Q50 65 10 50 Z" stroke="#111" stroke-width="1.5" fill="none"/>
-                    <line x1="50" y1="10" x2="50" y2="90" stroke="#111" stroke-width="1.5"/>
-                    <line x1="30" y1="15" x2="30" y2="85" stroke="#111" stroke-width="1.5"/>
-                    <line x1="70" y1="15" x2="70" y2="85" stroke="#111" stroke-width="1.5"/>
-                </svg>
-            </div>
-
-            <div class="doodle doodle-ribbon">
-                <span class="ribbon-bow">🎀</span>
-            </div>
-
-            <!-- Header Ripped Paper Strip -->
-            <div class="paper-strip ripped-banner">
-                <p class="handwritten-text">Celebremos juntos mi</p>
-            </div>
-
-            <!-- Cutout Letters C U M P L E -->
-            <div class="cutout-letters-container">
-                <span class="cutout-tile tile-1">C</span>
-                <span class="cutout-tile tile-2">U</span>
-                <span class="cutout-tile tile-3">M</span>
-                <span class="cutout-tile tile-4">P</span>
-                <span class="cutout-tile tile-5">L</span>
-                <span class="cutout-tile tile-6">E</span>
-            </div>
-
-            <!-- Collage Photo Grid -->
-            <div class="collage-hero-box">
-                <!-- Left Polaroid -->
-                <div class="polaroid-photo side-polaroid left-polaroid">
-                    <div class="washi-tape tape-black-dots"></div>
-                    <img src="assets/images/photo_vintage_1.png" alt="Recuerdo Infancia">
-                    <span class="polaroid-caption">Infancia 1966</span>
-                </div>
-
-                <!-- Main Center Cutout Photo -->
-                <div class="main-cutout-photo">
-                    <img src="assets/images/photo_vintage_1.png" alt="Cumpleañera">
-                    <div class="photo-cutout-shadow"></div>
-                </div>
-
-                <!-- Right Polaroid -->
-                <div class="polaroid-photo side-polaroid right-polaroid">
-                    <div class="washi-tape tape-grid"></div>
-                    <img src="assets/images/photo_vintage_1.png" alt="Recuerdo Juventud">
-                    <span class="polaroid-caption">Años 80</span>
+        <section class="hero-section hero-full-video">
+            <div class="hero-video-full-wrapper" id="heroVideoContainer">
+                <video autoplay loop muted playsinline id="heroVideo" preload="auto">
+                    <source src="assets/video/Video60.mp4" type="video/mp4">
+                    Tu navegador no soporta la reproducción de video.
+                </video>
+                <div class="video-play-badge" id="videoBadge" title="Video 60 Años">
+                    <i class="fa-solid fa-film"></i>
                 </div>
             </div>
-
-            <!-- Big Cutout Number 60 -->
-            <div class="number-60-wrapper">
-                <div class="torn-black-paper">
-                    <span class="number-60-text">60</span>
-                </div>
-            </div>
-
-            <!-- Details Tags (Ripped Paper Strips) -->
-            <div class="event-details-stack">
-                <div class="detail-tag tag-date">
-                    <i class="fa-regular fa-heart"></i>
-                    <span>31 de Octubre, 22:00 hs</span>
-                </div>
-                <div class="detail-tag tag-location">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <span>Caja Complementaria de la UNSE</span>
-                </div>
-                <div class="detail-tag tag-dresscode">
-                    <span>Dress code: <strong>TOTAL WHITE</strong></span>
-                </div>
-                <div class="detail-tag tag-party">
-                    <span class="handwritten-title">WHITE PARTY ♡</span>
-                </div>
-            </div>
-
         </section>
 
 
@@ -145,7 +62,7 @@
         <section class="section-box countdown-section">
             <div class="washi-tape tape-top-center"></div>
             <h2 class="section-title handwritten-title">¡Falta muy poco! ⏳</h2>
-            
+
             <div class="countdown-grid" id="countdown">
                 <div class="countdown-card">
                     <span class="count-number" id="days">00</span>
@@ -167,120 +84,76 @@
         </section>
 
 
-        <!-- ================= MEMORY PHOTO GALLERY ================= -->
-        <section class="section-box gallery-section">
-            <div class="paper-pin pin-left">📌</div>
-            <h2 class="section-title handwritten-title">60 Años de Momentos 📸</h2>
-            <p class="section-subtitle">Haz clic en cada foto para revivir los mejores capítulos de esta historia</p>
 
-            <div class="polaroid-grid">
-                <div class="polaroid-card" onclick="openLightbox('assets/images/photo_vintage_1.png', 'Etapa Infancia', 'Los primeros pasos llena de sueños y sonrisas.')">
-                    <div class="washi-tape tape-small"></div>
-                    <div class="polaroid-img-wrapper">
-                        <img src="assets/images/photo_vintage_1.png" alt="Infancia">
-                    </div>
-                    <p class="polaroid-text">Infancia (1966)</p>
-                </div>
 
-                <div class="polaroid-card alt-tilt" onclick="openLightbox('assets/images/photo_vintage_1.png', 'Años de Juventud', 'Época de bailes, amigos inolvidables y mucha música.')">
-                    <div class="washi-tape tape-small tape-right"></div>
-                    <div class="polaroid-img-wrapper">
-                        <img src="assets/images/photo_vintage_1.png" alt="Juventud">
-                    </div>
-                    <p class="polaroid-text">Juventud & Amigos</p>
-                </div>
+        <!-- ================= LOCATION SECTION ================= -->
+        <section class="section-box location-section">
+            <div class="washi-tape tape-top-center"></div>
+            <h2 class="section-title handwritten-title">¿Dónde es? 📍</h2>
+            <p class="location-name">Caja Complementaria de la UNSE</p>
+            <p class="location-address">Santiago del Estero, Argentina</p>
+            <a href="https://maps.google.com/?q=Caja+Complementaria+de+la+UNSE" target="_blank"
+                class="scrapbook-btn btn-maps">
+                <i class="fa-solid fa-diamond-turn-right"></i> Abrir en Google Maps
+            </a>
+        </section>
 
-                <div class="polaroid-card" onclick="openLightbox('assets/images/photo_vintage_1.png', 'Familia & Viajes', 'Momentos mágicos compartidos con los que más amo.')">
-                    <div class="washi-tape tape-small"></div>
-                    <div class="polaroid-img-wrapper">
-                        <img src="assets/images/photo_vintage_1.png" alt="Familia">
-                    </div>
-                    <p class="polaroid-text">Familia & Viajes</p>
-                </div>
-
-                <div class="polaroid-card alt-tilt" onclick="openLightbox('assets/images/photo_vintage_1.png', '¡Llegaron los 60!', 'Celebrando 6 decadas de vida en plena plenitud.')">
-                    <div class="washi-tape tape-small tape-right"></div>
-                    <div class="polaroid-img-wrapper">
-                        <img src="assets/images/photo_vintage_1.png" alt="60 Años">
-                    </div>
-                    <p class="polaroid-text">¡Llegando a los 60! ✨</p>
-                </div>
+        <!-- ================= CALENDAR SECTION ================= -->
+        <section class="section-box calendar-section">
+            <div class="washi-tape tape-top-center"></div>
+            <h2 class="section-title handwritten-title">¿Cuándo es? 📅</h2>
+            <p class="event-date-text">Sábado 31 de Octubre</p>
+            <p class="event-time-text">22:00 HS (Puntual)</p>
+            <div class="btn-group-vertical">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cumple+60+A%C3%B1os+-+White+Party&dates=20261031T220000/20261101T050000&details=Celebremos+juntos+los+60+a%C3%B1os.+Dresscode:+TOTAL+WHITE&location=Caja+Complementaria+de+la+UNSE"
+                    target="_blank" class="scrapbook-btn btn-calendar">
+                    <i class="fa-brands fa-google"></i> Guardar en Google Calendar
+                </a>
             </div>
         </section>
 
+        <!-- ================= DRESS CODE SECTION ================= -->
+        <section class="section-box dresscode-section">
+            <div class="washi-tape tape-top-center"></div>
+            <h2 class="section-title handwritten-title">Dress Code ⚪</h2>
+            <p class="dress-highlight">TOTAL WHITE</p>
+            <p class="dress-desc">Todos de blanco para iluminar la pista de baile</p>
+            <button onclick="openModal('dresscodeModal')" class="scrapbook-btn btn-info">
+                <i class="fa-solid fa-circle-info"></i> Ver sugerencias de outfit
+            </button>
+        </section>
 
-        <!-- ================= QUICK ACTIONS & INFO ================= -->
-        <section class="section-box actions-section">
-            <h2 class="section-title handwritten-title">Detalles del Evento 📍</h2>
-
-            <div class="actions-grid">
-                <!-- Location Box -->
-                <div class="action-card location-card">
-                    <div class="card-icon"><i class="fa-solid fa-map-location-dot"></i></div>
-                    <h3>¿Dónde es?</h3>
-                    <p class="location-name">Caja Complementaria de la UNSE</p>
-                    <p class="location-address">Santiago del Estero, Argentina</p>
-                    <a href="https://maps.google.com/?q=Caja+Complementaria+de+la+UNSE" target="_blank" class="scrapbook-btn btn-maps">
-                        <i class="fa-solid fa-diamond-turn-right"></i> Abrir en Google Maps
-                    </a>
-                </div>
-
-                <!-- Calendar Box -->
-                <div class="action-card calendar-card">
-                    <div class="card-icon"><i class="fa-solid fa-calendar-check"></i></div>
-                    <h3>¿Cuándo es?</h3>
-                    <p class="event-date-text">Sábado 31 de Octubre</p>
-                    <p class="event-time-text">22:00 HS (Puntual)</p>
-                    <div class="btn-group-vertical">
-                        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cumple+60+A%C3%B1os+-+White+Party&dates=20261031T220000/20261101T050000&details=Celebremos+juntos+los+60+a%C3%B1os.+Dresscode:+TOTAL+WHITE&location=Caja+Complementaria+de+la+UNSE" target="_blank" class="scrapbook-btn btn-calendar">
-                            <i class="fa-brands fa-google"></i> Guardar en Google Calendar
-                        </a>
-                        <button onclick="downloadICS()" class="scrapbook-btn btn-ics">
-                            <i class="fa-solid fa-file-export"></i> Descargar iCal (.ics)
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Dress Code Modal Trigger -->
-                <div class="action-card dresscode-card">
-                    <div class="card-icon"><i class="fa-solid fa-shirt"></i></div>
-                    <h3>Dress Code</h3>
-                    <p class="dress-highlight">TOTAL WHITE ⚪</p>
-                    <p class="dress-desc">Todos de blanco para iluminar la pista de baile</p>
-                    <button onclick="openModal('dresscodeModal')" class="scrapbook-btn btn-info">
-                        <i class="fa-solid fa-circle-info"></i> Ver sugerencias de outfit
-                    </button>
-                </div>
-
-                <!-- Gift / CBU Modal Trigger -->
-                <div class="action-card gift-card">
-                    <div class="card-icon"><i class="fa-solid fa-gift"></i></div>
-                    <h3>Regalo / CBU</h3>
-                    <p class="gift-desc">Tu presencia es mi mejor regalo. Si deseas realizar un presente:</p>
-                    <button onclick="openModal('giftModal')" class="scrapbook-btn btn-envelope">
-                        <i class="fa-solid fa-envelope-open-text"></i> Abrir Sobre de Regalo
-                    </button>
-                </div>
-            </div>
+        <!-- ================= GIFT / CBU SECTION ================= -->
+        <section class="section-box gift-section">
+            <div class="washi-tape tape-top-center"></div>
+            <div class="card-icon"><i class="fa-solid fa-gift"></i></div>
+            <h2 class="section-title handwritten-title">Regalo / CBU 🎁</h2>
+            <p class="gift-desc">Tu presencia es mi mejor regalo. Si deseas realizar un presente:</p>
+            <button onclick="openModal('giftModal')" class="scrapbook-btn btn-envelope">
+                <i class="fa-solid fa-envelope-open-text"></i> Abrir Sobre de Regalo
+            </button>
         </section>
 
 
         <!-- ================= RSVP FORM (GOOGLE SHEETS INTEGRATION) ================= -->
         <section class="section-box rsvp-section" id="rsvpSection">
             <div class="washi-tape tape-top-center tape-pattern"></div>
-            
+
             <div class="rsvp-header">
                 <span class="rsvp-badge">RSVP</span>
                 <h2 class="section-title handwritten-title">Confirmación de Asistencia</h2>
-                <p class="rsvp-subtitle">Por favor confirma antes del <strong>15 de Octubre</strong> para organizar todo a la perfección.</p>
+                <p class="rsvp-subtitle">Por favor confirma antes del <strong>30 de Septiembre</strong> para organizar
+                    todo
+                    a la perfección.</p>
             </div>
 
             <form id="rsvpForm" class="scrapbook-form">
-                
-                <!-- Webhook configuration status indicator -->
+
+                <!-- Webhook configuration status indicator (Comentado: Confirmaciones solo por WhatsApp)
                 <div class="api-status-banner" id="apiStatusBanner">
                     <i class="fa-solid fa-circle-check"></i> Conectado con Google Sheets (Servidor Activo)
                 </div>
+                -->
 
                 <div class="form-group">
                     <label for="nombre"><i class="fa-solid fa-user"></i> Nombre y Apellido *</label>
@@ -331,16 +204,19 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="cancion"><i class="fa-solid fa-music"></i> ¿Qué canción no puede faltar en la pista? 🎵</label>
+                    <label for="cancion"><i class="fa-solid fa-music"></i> ¿Qué canción no puede faltar en la pista?
+                        🎵</label>
                     <input type="text" id="cancion" name="cancion" placeholder="Ej: ABBA - Dancing Queen / Soda Stereo">
                 </div>
 
                 <div class="form-group">
-                    <label for="mensaje"><i class="fa-solid fa-comment-dots"></i> Deseo o mensaje para los 60 años (Opcional)</label>
-                    <textarea id="mensaje" name="mensaje" rows="3" placeholder="Escribe unas palabras cariñosas..."></textarea>
+                    <label for="mensaje"><i class="fa-solid fa-comment-dots"></i> Deseo o mensaje para los 60 años
+                        (Opcional)</label>
+                    <textarea id="mensaje" name="mensaje" rows="3"
+                        placeholder="Escribe unas palabras cariñosas..."></textarea>
                 </div>
 
-                <!-- Custom Google Sheet Webhook URL Input (Collapsible for user config) -->
+                <!-- Custom Google Sheet Webhook URL Input (Comentado para usar solo WhatsApp)
                 <div class="webhook-settings-toggle">
                     <button type="button" onclick="toggleWebhookConfig()" class="link-btn">
                         <i class="fa-solid fa-gear"></i> Configurar URL de Google Sheets
@@ -348,13 +224,15 @@
                     <div class="webhook-config-box hidden" id="webhookConfigBox">
                         <label for="webhookUrl">URL de tu Google Apps Script (Web App):</label>
                         <input type="url" id="webhookUrl" placeholder="https://script.google.com/macros/s/.../exec">
-                        <small>Pega la URL de tu script desplegado como Web App para recibir los datos en tu planilla de Google.</small>
+                        <small>Pega la URL de tu script desplegado como Web App para recibir los datos en tu planilla de
+                            Google.</small>
                     </div>
                 </div>
+                -->
 
                 <button type="submit" class="scrapbook-btn btn-submit" id="submitBtn">
                     <span class="btn-text">Confirmar Mi Asistencia ✨</span>
-                    <span class="btn-spinner hidden"><i class="fa-solid fa-spinner fa-spin"></i> Enviando a Google Sheets...</span>
+                    <span class="btn-spinner hidden"><i class="fa-solid fa-spinner fa-spin"></i> Abriendo WhatsApp...</span>
                 </button>
             </form>
 
@@ -380,17 +258,6 @@
 
     <!-- ================= MODALES ================= -->
 
-    <!-- Modal Lightbox Galería -->
-    <div class="modal-overlay" id="lightboxModal" onclick="closeModal('lightboxModal')">
-        <div class="modal-content polaroid-modal" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="closeModal('lightboxModal')">&times;</button>
-            <div class="modal-polaroid-frame">
-                <img id="lightboxImg" src="" alt="Foto en grande">
-                <h4 id="lightboxTitle" class="handwritten-title"></h4>
-                <p id="lightboxDesc"></p>
-            </div>
-        </div>
-    </div>
 
     <!-- Modal Dress Code -->
     <div class="modal-overlay" id="dresscodeModal" onclick="closeModal('dresscodeModal')">
@@ -401,21 +268,31 @@
                 <h3 class="handwritten-title">Guía de Dress Code: TOTAL WHITE</h3>
             </div>
             <div class="modal-body">
-                <p>Para crear una atmósfera mágica, elegante e iluminada, invitamos a todos los asistentes a vestir de <strong>Blanco Total</strong>.</p>
-                
+                <p>Para crear una atmósfera mágica, elegante e iluminada, invitamos a todos los asistentes a vestir de
+                    <strong>Blanco Total</strong>.
+                </p>
+
+                <!-- Dress Code Image -->
+                <div class="dresscode-image-box">
+                    <img src="assets/images/White party attire💫.jpeg" alt="White Party Attire" class="dresscode-img">
+                </div>
+
                 <div class="dress-suggestions">
                     <div class="suggestion-item">
                         <h4>👗 Mujeres</h4>
-                        <p>Vestidos blancos, monos elegantes, conjuntos de pantalón y blusa blanca. Calzado cómodo o metalizado (dorado/plateado).</p>
+                        <p>Vestidos blancos, monos elegantes, conjuntos de pantalón y blusa blanca. Calzado cómodo o
+                            metalizado (dorado/plateado).</p>
                     </div>
                     <div class="suggestion-item">
                         <h4>👔 Hombres</h4>
-                        <p>Camisa blanca, pantalón o bermuda vestir blanca/crema, mocasines o zapatillas urbanas blancas.</p>
+                        <p>Camisa blanca, pantalón o bermuda vestir blanca/crema, mocasines o zapatillas urbanas
+                            blancas.</p>
                     </div>
                 </div>
 
                 <div class="color-palette-box">
-                    <p><strong>Paleta permitida:</strong> Blanco puro, Marfil, Crema suave, Detalles metalizados en plata o plata con brillo.</p>
+                    <p><strong>Paleta permitida:</strong> Blanco puro, Marfil, Crema suave, Detalles metalizados en
+                        plata o plata con brillo.</p>
                     <div class="palette-swatches">
                         <span class="swatch s-white" title="Blanco Pura"></span>
                         <span class="swatch s-ivory" title="Marfil"></span>
@@ -437,7 +314,9 @@
                 <h3 class="handwritten-title">Sobre de Regalo 💌</h3>
             </div>
             <div class="modal-body">
-                <p class="gift-note">Lo más importante es contar con tu presencia y alegría en esta noche tan especial. Sin embargo, si deseas hacerme un presente, puedes colaborar con mi viaje de cumpleaños a través de la siguiente cuenta:</p>
+                <p class="gift-note">Lo más importante es contar con tu presencia y alegría en esta noche tan especial.
+                    Sin embargo, si deseas hacerme un presente, puedes colaborar con mi viaje de cumpleaños a través de
+                    la siguiente cuenta:</p>
 
                 <div class="cbu-box">
                     <div class="cbu-row">
@@ -473,4 +352,5 @@
     <!-- JS Scripts -->
     <script src="js/app.js"></script>
 </body>
+
 </html>
