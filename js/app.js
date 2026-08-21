@@ -249,6 +249,18 @@ function closeModal(modalId) {
     }
 }
 
+function openLightbox(imgSrc, title, desc) {
+    const img = document.getElementById('lightboxImg');
+    const titleEl = document.getElementById('lightboxTitle');
+    const descEl = document.getElementById('lightboxDesc');
+
+    if (img) img.src = imgSrc;
+    if (titleEl) titleEl.textContent = title || '';
+    if (descEl) descEl.textContent = desc || '';
+
+    openModal('lightboxModal');
+}
+
 
 
 // ================= 4. COPIAR CBU / ALIAS =================

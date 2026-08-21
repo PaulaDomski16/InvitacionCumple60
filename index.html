@@ -39,7 +39,7 @@
             <span></span><span></span><span></span>
         </span>
     </div>
-    <audio id="bgMusic" loop src="assets/audio/WhatsApp%20Audio%202026-08-20%20at%2020.58.04.mpeg"></audio>
+    <audio id="bgMusic" loop src="assets/audio/tema2.mpeg"></audio>
 
     <!-- Main Container Scrapbook Background -->
     <main class="scrapbook-wrapper">
@@ -84,9 +84,50 @@
         </section>
 
 
+        <!-- ================= MEMORY PHOTO GALLERY ================= -->
+        <section class="section-box gallery-section">
+            <div class="washi-tape tape-top-center"></div>
+            <h2 class="section-title handwritten-title">60 Años de Momentos 📸</h2>
+            <p class="section-subtitle">Haz clic en cada foto para revivir estos recuerdos</p>
 
+            <div class="polaroid-grid">
+                <div class="polaroid-card"
+                    onclick="openLightbox('assets/images/foto1.jpeg', 'Recuerdos Especiales', 'Celebrando la vida y los hermosos momentos.')">
+                    <div class="washi-tape tape-small"></div>
+                    <div class="polaroid-img-wrapper">
+                        <img src="assets/images/foto1.jpeg" alt="Recuerdos 1">
+                    </div>
+                    <p class="polaroid-text">Momento Especial ♡</p>
+                </div>
 
-        <!-- ================= LOCATION SECTION ================= -->
+                <div class="polaroid-card alt-tilt"
+                    onclick="openLightbox('assets/images/foto2.jpeg', 'Alegría & Sonrisas', 'Compartiendo momentos inolvidables.')">
+                    <div class="washi-tape tape-small tape-right"></div>
+                    <div class="polaroid-img-wrapper">
+                        <img src="assets/images/foto2.jpeg" alt="Recuerdos 2">
+                    </div>
+                    <p class="polaroid-text">Alegría & Sonrisas ✨</p>
+                </div>
+
+                <div class="polaroid-card"
+                    onclick="openLightbox('assets/images/foto3.jpeg', 'Grandes Historias', '60 años de vivencias y mucho amor.')">
+                    <div class="washi-tape tape-small"></div>
+                    <div class="polaroid-img-wrapper">
+                        <img src="assets/images/foto3.jpeg" alt="Recuerdos 3">
+                    </div>
+                    <p class="polaroid-text">Grandes Historias 🥂</p>
+                </div>
+
+                <div class="polaroid-card alt-tilt"
+                    onclick="openLightbox('assets/images/foto4.jpeg', '¡Llegaron los 60!', 'Celebrando seis décadas llenas de felicidad.')">
+                    <div class="washi-tape tape-small tape-right"></div>
+                    <div class="polaroid-img-wrapper">
+                        <img src="assets/images/foto4.jpeg" alt="Recuerdos 4">
+                    </div>
+                    <p class="polaroid-text">¡Llegando a los 60! 🎉</p>
+                </div>
+            </div>
+        </section>
         <section class="section-box location-section">
             <div class="washi-tape tape-top-center"></div>
             <h2 class="section-title handwritten-title">¿Dónde es? 📍</h2>
@@ -117,7 +158,8 @@
             <div class="washi-tape tape-top-center"></div>
             <h2 class="section-title handwritten-title">Dress Code ⚪</h2>
             <p class="dress-highlight">TOTAL WHITE</p>
-            <p class="dress-desc">Todos de blanco para iluminar la pista. ¡También puedes venir en Jeans o pantalones Caqui para mayor comodidad!</p>
+            <p class="dress-desc">Todos de blanco para iluminar la pista. ¡También puedes venir en Jeans o pantalones
+                Caqui para mayor comodidad!</p>
             <button onclick="openModal('dresscodeModal')" class="scrapbook-btn btn-info">
                 <i class="fa-solid fa-circle-info"></i> Ver sugerencias de outfit
             </button>
@@ -233,7 +275,8 @@
 
                 <button type="submit" class="scrapbook-btn btn-submit" id="submitBtn">
                     <span class="btn-text">Confirmar Mi Asistencia ✨</span>
-                    <span class="btn-spinner hidden"><i class="fa-solid fa-spinner fa-spin"></i> Abriendo WhatsApp...</span>
+                    <span class="btn-spinner hidden"><i class="fa-solid fa-spinner fa-spin"></i> Abriendo
+                        WhatsApp...</span>
                 </button>
             </form>
 
@@ -259,6 +302,18 @@
 
     <!-- ================= MODALES ================= -->
 
+    <!-- Modal Lightbox Galería -->
+    <div class="modal-overlay" id="lightboxModal" onclick="closeModal('lightboxModal')">
+        <div class="modal-content polaroid-modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal('lightboxModal')">&times;</button>
+            <div class="modal-polaroid-frame">
+                <img id="lightboxImg" src="" alt="Foto en grande">
+                <h4 id="lightboxTitle" class="handwritten-title"></h4>
+                <p id="lightboxDesc"></p>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Modal Dress Code -->
     <div class="modal-overlay" id="dresscodeModal" onclick="closeModal('dresscodeModal')">
@@ -281,7 +336,8 @@
                 <div class="dress-suggestions">
                     <div class="suggestion-item">
                         <h4>👗 Mujeres</h4>
-                        <p>Vestidos blancos, monos elegantes, conjuntos de pantalón, jeans o blusa blanca. Calzado cómodo o
+                        <p>Vestidos blancos, monos elegantes, conjuntos de pantalón, jeans o blusa blanca. Calzado
+                            cómodo o
                             metalizado (dorado/plateado).</p>
                     </div>
                     <div class="suggestion-item">
@@ -292,7 +348,8 @@
                 </div>
 
                 <div class="color-palette-box">
-                    <p><strong>Paleta permitida:</strong> Blanco puro, Marfil, Crema suave, detalles en Caqui/Jean y toques metalizados en plata o dorado.</p>
+                    <p><strong>Paleta permitida:</strong> Blanco puro, Marfil, Crema suave, detalles en Caqui/Jean y
+                        toques metalizados en plata o dorado.</p>
                     <div class="palette-swatches">
                         <span class="swatch s-white" title="Blanco Puro"></span>
                         <span class="swatch s-ivory" title="Marfil"></span>
