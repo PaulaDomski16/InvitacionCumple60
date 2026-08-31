@@ -306,8 +306,8 @@ function downloadICS() {
 
 
 // ================= 6. FORMULARIO RSVP & WHATSAPP =================
-// Número para pruebas (se cambiará luego por el definitivo): +543814562683
-const WHATSAPP_NUMBER = "543814562683";
+// Número definitivo para recepción de confirmaciones por WhatsApp: +5493854094154
+const WHATSAPP_NUMBER = "5493854094154";
 
 function buildWhatsAppUrl(data) {
     let text = `¡Hola! Confirmo mi respuesta para la Fiesta de 60 Años (White Party) 🥂✨\n\n`;
